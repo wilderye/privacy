@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Discord 社区 Bot 隐私政策：匿名聊天与游戏功能的数据使用、保存期限及删除方式。Privacy policy for the community bot's anonymous chat and game features.">
-  <title>社区 Bot 隐私政策 · Privacy Policy</title>
+  <meta name="description" content="Discord 匿名 Bot 隐私政策：匿名聊天与帖子人数清理的数据使用、保存期限及删除方式。Privacy policy for the bot's anonymous chat and thread membership cleanup features.">
+  <title>匿名 Bot 隐私政策 · Privacy Policy</title>
   <style>
     :root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; color: #24292f; background: #fff; }
     * { box-sizing: border-box; }
@@ -30,8 +30,8 @@
 <body id="top">
   <main>
     <header>
-      <h1>隐私政策</h1>
-      <p class="subtitle">Privacy Policy · Discord 社区 Bot</p>
+      <h1>匿名 Bot 隐私政策</h1>
+      <p class="subtitle">Privacy Policy · Anonymous Chat &amp; Thread Membership Cleanup</p>
       <nav aria-label="选择语言 / Choose a language">
         <a href="#zh" lang="zh-CN">中文</a>
         <a href="#en" lang="en">English</a>
@@ -39,11 +39,11 @@
     </header>
     <section id="zh" lang="zh-CN" aria-labelledby="zh-title">
       <h2 id="zh-title">中文</h2>
-<p>更新日期：2026-09-09</p>
-<p>本说明适用于本社区 Bot 提供的汉兜、海龟汤、谁是卧底和匿名聊天功能；仅在对应功能启用及使用时处理相关数据。</p>
+<p>更新日期：2026-10-13</p>
+<p>本说明仅适用于本 Bot 提供的匿名聊天和帖子人数清理功能；仅在对应功能启用及使用时处理相关数据。</p>
 <h3>匿名聊天</h3>
 <h4>收集的数据与用途</h4>
-<p>Bot 按功能需要处理 Discord 用户 ID、服务器和频道 ID、消息 ID、操作时间，以及用户为该功能提交的内容。</p>
+<p>Bot 按功能需要处理 Discord 用户、服务器、频道和消息的 ID（平台分配的编号）、操作时间，以及用户为该功能提交的内容。</p>
 <p>服务器长期保存真实作者 ID、匿名昵称和头像地址、身份周期、消息归属，以及消息 ID、回复目标、发送和删除时间等必要关联信息，用于每日身份轮换、本人编辑删除和社区管理。自动转换只处理配置的匿名频道。</p>
 <p>消息正文、附件内容和引用摘要只在 Discord 长期保存。Bot 为转发、生成回复或编辑而临时读取这些内容，在处理结束后不保留长期副本，也不将其写入匿名数据库、服务器文件或错误日志。回复和编辑时从 Discord 重新读取现有消息。</p>
 <p>图片和文件会为匿名重新发布而临时下载，不在运营服务器另存长期附件副本；重新发布后的附件由 Discord 保存。正文中的图片或 GIF 链接属于正文的一部分。</p>
@@ -51,8 +51,8 @@
 <p>匿名功能隐藏消息公开展示的真实账号，但 Bot 会保存作者归属。社区指定的管理角色可通过 Bot 查询真实作者，查询结果仅私信查询者。运营和服务器维护人员可在必要的维护或数据请求处理中访问存储数据。</p>
 <p>直接发送普通消息的方式是在消息发布后删除再转发，原账号可能短暂可见。使用匿名命令或匿名回复弹窗时，由 Bot 直接发布匿名消息。</p>
 <h4>保存位置与期限</h4>
-<p>身份、作者归属和必要关联信息会保存在 Bot 运营服务器的数据文件中，因此服务器仍保存部分用户数据；这不包含匿名消息的正文、附件内容或引用摘要副本。</p>
-<p>匿名身份与归属数据库采用 AES-256 静态加密，密钥由运行环境单独提供，并与数据库备份分开保管。Bot 运行时按功能需要解密读取；能够访问运行环境和密钥的授权维护人员仍可能接触这些数据。</p>
+<p>身份、作者归属和必要关联信息保存在 Aiven（数据库托管服务商）提供的 PostgreSQL 数据库中，属于 Discord 之外的用户数据存储；不包含匿名消息的正文、附件内容或引用摘要副本。</p>
+<p>Aiven 对数据库磁盘和备份进行加密，并管理加密密钥；Bot 通过 TLS 建立加密连接，并使用该服务的 CA 证书确认连接的是对应的数据库服务器。持有数据库访问凭证的授权维护人员及服务商在必要运维过程中仍可能访问数据。</p>
 <p>匿名消息仍存在时，保留作者归属和关联信息，这可能超过 30 天。Bot 观察到该匿名消息删除后，这些记录再保留 30 天，随后在定时清理中删除。删除触发转换的普通原消息，不会开始这段计时。Bot 离线期间未观察到的删除，需在后续确认后处理。</p>
 <p>已经出现在其他消息中的回复摘要保留在 Discord 的那些回复消息中，不因被引用消息的普通删除而自动消失。服务器不另存这些摘要。每日身份保留每位用户最近一次分配，用于保持当天身份和避开上次身份，目前没有按闲置天数自动清理。</p>
 <h4>停止使用、更正和删除数据</h4>
@@ -60,18 +60,22 @@
 <p>如需更正或删除与你有关的数据，请到<a href="https://discord.com/channels/1447978053665030280/1460652208348598437">联系管理的工单频道</a>，使用现有入口开启工单，说明相关账号和请求范围。管理人员核实请求后处理，无需提供账号密码。</p>
 <p>删除一条频道消息与申请删除个人数据是不同操作。若希望删除与你有关的其他存储记录，请在工单中明确提出；个人数据删除请求不以普通消息删除后的 30 天自动清理代替。</p>
 <h4>数据使用与接收方</h4>
-<p>数据用于匿名聊天、社区管理和必要维护，不用于出售、广告定向或训练机器学习及 AI 模型。为实现功能，Bot 会将消息及附件发送给 Discord；托管基础设施用于运行和存储数据。</p>
+<p>数据用于匿名聊天、社区管理和必要维护，不用于出售、广告定向或训练机器学习及 AI 模型。为实现功能，Bot 会将消息及附件发送给 Discord；托管基础设施用于运行和存储数据。匿名身份与归属由 Aiven 托管，服务商备份按其备份保留安排到期，在线数据删除不代表备份中的副本立刻消失。</p>
 <p>政策随功能和数据处理方式变化更新。对本说明有疑问，也可通过上述工单入口联系管理。</p>
-<h3>游戏功能</h3>
-<p>汉兜、海龟汤和谁是卧底会按实际使用的功能，处理必要的参与者、主持人、用户与消息 ID、游戏状态、提问与回答、发言与投票，以及游戏统计，用于开展游戏、恢复状态和展示结果。</p>
-<p>游戏资料根据部署配置保存在服务器数据库或临时内存中。游戏运行记录随本局正常结束流程清理；长期游戏统计用于继续提供统计功能，目前没有统一的 30 天自动到期规则。</p>
-<p>游戏数据仅用于游戏运行、统计和必要维护，不用于出售、广告定向或训练机器学习及 AI 模型。为提供这些功能，Bot 会向 Discord 发送相应结果，托管基础设施用于运行和存储数据。</p>
-<p>如需更正或删除游戏相关的个人数据，同样可以到<a href="https://discord.com/channels/1447978053665030280/1460652208348598437">联系管理的工单频道</a>开启工单，说明账号和请求范围，由管理人员核实后处理。</p>
+<h3>帖子人数清理</h3>
+<h4>功能与处理的数据</h4>
+<p>帖主或社区指定管理角色使用清理命令后，Bot 为该帖子开启自动清理。手动使用时随机移除部分成员，以 950 人为目标；当前不超过 950 人时不移除成员。Bot 启动时及之后每半小时检查已开启的公开帖子，正常新一轮达到 990 人时清到 950 人。保留可确认的帖主和 Bot 自己；无法确认帖主但确认论坛首楼已不存在的例外，仅允许管理组手动执行。移除只让成员退出帖子，保留已发送的消息，不踢出服务器；有访问权限的成员仍可再次加入。</p>
+<p>此功能临时处理服务器、帖子及成员 ID，用完整帖子成员名单判断人数和随机选择移除对象。不统计发言记录、不扫描整帖历史，也不查询匿名作者归属。核实首楼消失的手动例外会临时请求首楼这一条消息，不另存其正文或附件。</p>
+<h4>保存的数据</h4>
+<p>Bot 在运营服务器的普通文件中保存已开启的帖子编号和清理是否尚未完成的标记，以便在重启后继续检查，并处理失败或中断的清理。这些设置没有按固定天数自动删除的规则。不保存成员名单或被移除成员名单。</p>
+<p>手动结果仅执行者可见。运行日志记录服务器和帖子 ID、清理前人数、实际成功移除数量和必要错误标识。自动清理失败通知发到社区指定的通知频道，包含帖子链接、失败情况及实际移除数量，不包含成员名单或消息内容；能查看该频道的成员可以看到通知。</p>
+<h4>数据用途与请求</h4>
+<p>这些数据仅用于维持帖子可加入的空间和必要维护，不用于出售、广告定向或训练机器学习及 AI 模型。如需更正、删除与你有关的数据，或有其他数据处理问题，可通过<a href="https://discord.com/channels/1447978053665030280/1460652208348598437">联系管理的工单频道</a>提出请求，由管理人员核实后处理。</p>
     </section>
     <section id="en" lang="en" aria-labelledby="en-title">
       <h2 id="en-title">English</h2>
-<p>Last updated: September 9, 2026</p>
-<p>This policy applies to the Handle, lateral-thinking puzzle, Undercover, and anonymous-chat features provided by this community bot. Data is processed only when the relevant feature is enabled and used.</p>
+<p>Last updated: October 13, 2026</p>
+<p>This policy applies only to this bot's anonymous chat and thread membership cleanup features. Data is processed only when the relevant feature is enabled and used.</p>
 <h3>Anonymous chat</h3>
 <h4>Data collected and its purposes</h4>
 <p>As needed to provide the feature, the bot processes Discord user IDs, server and channel IDs, message IDs, operation timestamps, and content users submit for the feature.</p>
@@ -82,8 +86,8 @@
 <p>Anonymous messages hide the original account from public display, but the bot retains ownership records. Members holding the community's designated moderator role can use the bot to identify the original author. The result is sent only by direct message to the moderator making the query. Operators and server maintainers may access stored data when necessary for maintenance or handling data requests.</p>
 <p>Ordinary messages sent directly to the channel are deleted and reposted after publication, so the original account may be visible briefly. Messages submitted through anonymous commands or the anonymous-reply form are published directly by the bot.</p>
 <h4>Storage location and retention</h4>
-<p>Identities, author ownership records, and necessary associations are stored in data files on the bot's operating server. The server therefore retains some user data, but it does not retain copies of anonymous message text, attachment contents, or quoted reply excerpts.</p>
-<p>The anonymous identity and ownership database uses AES-256 encryption at rest. Its key is supplied separately through the runtime environment and kept separate from database backups. While running, the bot decrypts records as needed to provide its features. Authorized maintainers who can access the runtime environment and key may still be able to access this data.</p>
+<p>Identities, author ownership records, and necessary associations are stored in a PostgreSQL database hosted by Aiven. This is user data storage outside Discord; it does not include copies of anonymous message text, attachment contents, or quoted reply excerpts.</p>
+<p>Aiven provides encryption at rest for database disks and backups and manages the encryption keys. The bot connects to the database over TLS and verifies the server's identity using the service's CA certificate. Authorized maintainers holding database access credentials and the service provider may still access data when necessary for operations and maintenance.</p>
 <p>Author ownership and association records are retained while the anonymous message exists, which may exceed 30 days. After the bot observes the deletion of that anonymous message, these records are retained for a further 30 days and then removed by scheduled cleanup. Deleting the ordinary original message that triggered conversion does not start this retention period. Deletions the bot did not observe while offline require subsequent confirmation and handling.</p>
 <p>Reply excerpts already included in other messages remain in those Discord messages and do not automatically disappear when the quoted message is deleted normally. The server does not keep separate copies of these excerpts. For daily identities, the most recent assignment for each user is retained to maintain that day's identity and avoid reusing the previous identity. There is currently no automatic cleanup based on the number of inactive days.</p>
 <h4>Stopping use, correction, and deletion requests</h4>
@@ -91,13 +95,17 @@
 <p>To request correction or deletion of data relating to you, visit the <a href="https://discord.com/channels/1447978053665030280/1460652208348598437">moderator contact and ticket channel</a>, open a ticket through the existing entry point, and specify the relevant account and scope of your request. Moderators will verify and handle the request. You do not need to provide your account password.</p>
 <p>Deleting a channel message and requesting deletion of personal data are different actions. If you want other stored records relating to you deleted, explicitly include them in your ticket. The automatic 30-day cleanup after message deletion does not replace handling a personal-data deletion request.</p>
 <h4>Data use and recipients</h4>
-<p>Data is used for anonymous chat, community moderation, and necessary maintenance. It is not used for sale, targeted advertising, or training machine-learning or AI models. To provide its features, the bot sends messages and attachments to Discord. Hosting infrastructure is used to run the bot and store data.</p>
+<p>Data is used for anonymous chat, community moderation, and necessary maintenance. It is not used for sale, targeted advertising, or training machine-learning or AI models. To provide its features, the bot sends messages and attachments to Discord. Hosting infrastructure is used to run the bot and store data. Anonymous identities and ownership records are hosted by Aiven. Provider backups expire according to the provider's backup retention arrangements; deletion from the live database does not immediately remove copies from backups.</p>
 <p>This policy is updated when features or data-processing practices change. Questions about the policy can also be submitted through the ticket channel above.</p>
-<h3>Game features</h3>
-<p>Depending on which features are used, Handle, lateral-thinking puzzles, and Undercover process necessary participant, host, user, and message IDs; game state; questions and answers; statements and votes; and game statistics. This data is used to run games, restore state, and display results.</p>
-<p>Game data is stored in server databases or temporary memory, depending on the deployment configuration. Active game records are cleaned up through the normal end-of-game process. Long-term game statistics are retained to continue providing statistics; there is currently no uniform automatic 30-day expiry rule.</p>
-<p>Game data is used only for game operation, statistics, and necessary maintenance. It is not used for sale, targeted advertising, or training machine-learning or AI models. To provide these features, the bot sends the relevant results to Discord. Hosting infrastructure is used to run the bot and store data.</p>
-<p>To request correction or deletion of game-related personal data, you can also open a ticket in the <a href="https://discord.com/channels/1447978053665030280/1460652208348598437">moderator contact and ticket channel</a>. Specify the relevant account and scope of your request, and moderators will verify and handle it.</p>
+<h3>Thread membership cleanup</h3>
+<h4>Functionality and data processed</h4>
+<p>After the thread owner or a member holding the designated community moderator role uses the cleanup command, the bot enables automatic cleanup for that thread. Manual cleanup randomly removes some members, targeting 950 remaining members; no members are removed if the current count is at or below 950. At startup and every half hour thereafter, the bot checks public threads with cleanup enabled. A normal new automatic cleanup round starts at 990 members and targets 950. The bot preserves the identifiable thread owner and itself. An exception when the owner cannot be identified but the forum's starter message is confirmed missing is available only for manual use by moderators. Removal only makes a member leave the thread; it preserves their messages and does not remove them from the server. Members with access may join the thread again.</p>
+<p>This feature temporarily processes server, thread, and member IDs. It uses the full thread member list to determine the count and randomly select members for removal. It does not analyze posting activity, scan the thread's message history, or look up anonymous authorship. The manual exception for a missing starter message temporarily requests only that message, without separately retaining its text or attachments.</p>
+<h4>Data stored</h4>
+<p>The bot stores enabled thread IDs and a flag indicating whether cleanup remains unfinished in a regular file on its operating server. This allows checks to continue after a restart and failed or interrupted cleanup to resume. These settings have no automatic expiry after a fixed number of days. Member lists and lists of removed members are not retained.</p>
+<p>Manual results are visible only to the person running the command. Runtime logs record server and thread IDs, the member count before cleanup, the number of confirmed successful removals, and necessary error identifiers. Automatic cleanup failure notices are sent to the community's designated notification channel. They include the thread link, failure information, and the number of confirmed removals, but no member list or message content. Members who can view that channel can see these notices.</p>
+<h4>Data uses and requests</h4>
+<p>This data is used only to maintain room for members to join threads and for necessary maintenance. It is not used for sale, targeted advertising, or training machine-learning or AI models. To request correction or deletion of data relating to you, or to raise other data-handling questions, use the <a href="https://discord.com/channels/1447978053665030280/1460652208348598437">moderator contact and ticket channel</a>. Moderators will verify and handle the request.</p>
     </section>
     <footer><a href="#top">返回顶部 · Back to top</a></footer>
   </main>
